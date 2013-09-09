@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'newrelic_rpm'
 
-get '/' do
+get '/*' do
   redirect '/index.html'
 end
 
