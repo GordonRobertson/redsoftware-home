@@ -3,7 +3,14 @@ GEM
   specs:
     daemons (1.1.9)
     eventmachine (1.0.3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25)
     newrelic_rpm (3.6.7.152)
+    polyglot (0.3.3)
+    pony (1.5)
+      mail (> 2.0)
     rack (1.5.2)
     sinatra (1.1.0)
       rack (~> 1.1)
@@ -13,11 +20,15 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   newrelic_rpm
+  pony
   sinatra (= 1.1.0)
   thin
