@@ -55,7 +55,7 @@
 				<h1>Freelance software development</h1>
 				<p>We've spent the last fifteen years building applications and websites for clients, large and small. If you need a business application developed, we can help.
 	</p>
-				<a href="#" class="btn btn-xlarge btn-purple">Get in Touch</a>
+				<a href="#" class="btn btn-xlarge btn-purple" id="mainbutton">Get in Touch</a>
 			</div>	
 		</div>
 	</div>
@@ -219,6 +219,14 @@ $(function () {
     // scroll nav
     $('.scroller').click(function(){
     	var section = $($(this).data("section"));
+    	var top = section.offset().top-82;
+        $("html, body").animate({ scrollTop: top }, 700);
+        return false;
+    });
+
+    // button nav
+    $('#mainbutton').click(function () {
+    	var section = $("#contact");
     	var top = section.offset().top-82;
         $("html, body").animate({ scrollTop: top }, 700);
         return false;
