@@ -147,23 +147,26 @@
 		<h1>Get in touch</h1>	
 	
 		<div class="span5">			
-			<form>
+
+			<h2 class="hide" id="confirmation">We'll be in touch</h2>
+
+			<form action='/message' method='post' id="contactform" enctype="multipart/form-data">
 				  <div class="control-group">
 				    <label class="control-label" for="inputName">Name</label>
 				    <div class="controls">
-				      <input type="text" class="span4" id="inputName" placeholder="Name">
+				      <input type="text" class="span4" name="inputName" id="inputName" placeholder="Name">
 				    </div>
 				  </div>
 				  <div class="control-group">
 				    <label class="control-label" for="inputEmail">Email</label>
 				    <div class="controls">
-				      <input type="text" class="span4" id="inputEmail" placeholder="Email">
+				      <input type="text" class="span4" name="inputEmail" id="inputEmail" placeholder="Email">
 				    </div>
 				  </div>
 				  <div class="control-group">
 				    <label class="control-label" for="inputContact">Message</label>
 				    <div class="controls">
-				     <textarea id="inputContact" class="span4"></textarea>
+				     <textarea name="inputContact" id="inputContact" class="span4"></textarea>
 				    </div>
 				  </div>
 				  <div class="control-group">
@@ -175,6 +178,7 @@
 		</div>
 	
 		<div class="span4">	
+
 				<h2>On-Line</h2>
 			
 				<address>
@@ -224,12 +228,29 @@ $(function () {
         return false;
     });
 
-    // button nav
+    // Main button - navigate to the contact section
     $('#mainbutton').click(function () {
     	var section = $("#contact");
     	var top = section.offset().top-82;
         $("html, body").animate({ scrollTop: top }, 700);
         return false;
+    });
+
+    // Contact form submit
+    $('#contactform').submit( function () {
+
+        $.ajax({
+            type: "POST",
+            url: "/message",
+            data: $('#contactform').serialize(),
+            success: function(data) {
+                $('#contactform').fadeOut();
+                $('#confirmation').fadeIn();
+            }
+        });
+
+        return false;
+
     });
 
 	    	    
